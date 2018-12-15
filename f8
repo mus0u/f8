@@ -5,7 +5,7 @@ require 'yaml'
 
 DESC = 'roll fate dice with optional skill rating'
 
-BOT_TOKEN = YAML.load_file('config.yml')['token']
+CONFIG = YAML.load_file File.realpath File.join __FILE__, '../config.yml'
 
 gemfile true do
   source 'https://rubygems.org'
@@ -32,7 +32,7 @@ handler = lambda do |_event, rating=0|
   Roll.new rating.to_i
 end
 
-bot = Discordrb::Commands::CommandBot.new token: BOT_TOKEN, prefix: 'f8 '
+bot = Discordrb::Commands::CommandBot.new token: CONFIG['token'], prefix: 'f8 '
 bot.command :roll, min_args: 0, max_args: 1, description: DESC, &handler
 bot.command :r, min_args: 0, max_args: 1, description: DESC, &handler
 bot.run
