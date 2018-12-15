@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+ENV['DISCORDRB_NONACL'] = 'true'
 require 'bundler/inline'
 require 'yaml'
 
