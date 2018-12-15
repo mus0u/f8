@@ -1,9 +1,41 @@
 #!/usr/bin/env ruby
 require 'bundler/inline'
+require 'yaml'
+
+BOT_TOKEN = YAML.load_file('config.yml')['token']
 
 gemfile do
   ruby '2.3.1'
   source 'https://rubygems.org'
-
   gem 'discordrb'
 end
+
+class Roll
+  PLUS = '[+]'
+  MINUS = '[-]'
+  ZERO = '[ ]'
+  def PLUS.to_i;   1; end
+  def MINUS.to_i; -1; end
+  def ZERO.to_i;   0; end
+
+  def initialize rating=0
+    @rating = rating
+    @roll = 4.times.map do [PLUS, MINUS, ZERO].sample end
+    @total = @roll.inject @rating do |m, n| m + n.to_i end
+  end
+
+  def to_s
+    "**#@total** \n(#{@roll.join} + #@rating)"
+  end
+end
+
+desc = 'roll fate dice with optional skill rating'
+
+handler = lambda do |_event, rating=0|
+  Roll.new rating.to_i
+end
+
+bot = Discordrb::Commands::CommandBot.new token: BOT_TOKEN, prefix: 'f8 '
+bot.command :roll, min_args: 0, max_args: 1, description: desc, &handler
+bot.command :r, min_args: 0, max_args: 1, description: desc, &handler
+bot.run
