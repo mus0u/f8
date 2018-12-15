@@ -4,7 +4,7 @@ a tiny self-hosted discord bot for rolling fate dice
 ## instructions
 1. make sure ruby is installed on your local system
 1. download the `f8` script file
-1. navigate to https://discordapp.com/developers/applications and create a new application
+1. navigate to https://discordapp.com/developers/applications and create a new application. you can use the included `f8.png` as a logo if desired.
 1. click the `Bot` link on the sidebar
 1. add a new bot user for your new application
 1. click the `Copy` button to copy your new bot user's token
@@ -23,6 +23,6 @@ it requires permissions to be able to send and receive messages in a channel in 
 thanks to [discordrb](https://github.com/meew0/discordrb) for making this bot easy to implement.
 thanks to [MusicBot](https://github.com/jagrosh/MusicBot) for inspiration and clear setup instructions.
 
-# LICENSE
+# license
 this work is distributed under the terms of the GNU general public license, version 3.
 see the `LICENSE` file for details.
