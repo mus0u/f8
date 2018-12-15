@@ -2,7 +2,7 @@
 a tiny self-hosted discord bot for rolling fate dice
 
 ## instructions
-1. make sure ruby is installed on your local system
+1. make sure [ruby](https://www.ruby-lang.org) and [bundler](https://bundler.io) are installed on your local system
 1. download the `f8` script file
 1. navigate to https://discordapp.com/developers/applications and create a new application. you can use the included `f8.png` as a logo if desired.
 1. click the `Bot` link on the sidebar
