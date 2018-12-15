@@ -12,6 +12,12 @@ gemfile true do
   gem 'discordrb'
 end
 
+class Numeric
+  def sign
+    self.negative? ? ?- : ?+
+  end
+end
+
 class Roll
   PLUS = '[+]';  def PLUS.to_i;   1; end
   MINUS = '[-]'; def MINUS.to_i; -1; end
@@ -24,7 +30,7 @@ class Roll
   end
 
   def to_s
-    "**#@total** \n(#{@roll.join} + #@rating)"
+    "**#@total** \n(#{@roll.join} #{@rating.sign} #{@rating.abs})"
   end
 end
 
